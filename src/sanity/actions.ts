@@ -16,7 +16,7 @@ export const getResources = async (params: GetResourcesParams) => {
           title,
           _id,
           downloadLink,
-          "image": poster.asset->url,
+          "image": poster.asset->url,   
           views,
           slug,
           category
@@ -35,7 +35,7 @@ export const getResourcesPlaylist = async () => {
             groq`*[_type == "resourcePlaylist"]{
                 _id,
                 title,
-                resources[0...6]=>{
+                resources[0...6]->{
                     _id,
                     title,
                     downloadLink,

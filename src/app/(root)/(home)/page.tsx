@@ -16,6 +16,7 @@ interface Props {
 }
 
 const Page: NextPage<Props> = async ({ searchParams }) => {
+
     const resources = await getResources({
         query: searchParams?.query || '',
         category: searchParams?.category || '',
@@ -47,7 +48,7 @@ const Page: NextPage<Props> = async ({ searchParams }) => {
 
                 <div className='mt-12 flex w-full flex-wrap justify-center gap-10 sm:justify-start'>
                     {resources?.length > 0 ? (
-                        resources.map((resource: any) => (
+                        resources?.map((resource: any) => (
                             <ResourceCard
                                 key={resource._id}
                                 title={resource.title}
@@ -65,17 +66,17 @@ const Page: NextPage<Props> = async ({ searchParams }) => {
                 </div>
             </section>
 
-            {/* {resourcesPlaylist.map((item: any) => (
+            {resourcesPlaylist?.map((playList: any) => (
                 <section
-                    key={item._id}
+                    key={playList._id}
                     className='flex-center mt-6 w-full flex-col sm:mt-20'
                 >
                     <h1 className='heading3 self-start text-white-800'>
-                        {item.title}
+                        {playList.title}
                     </h1>
                     <div className='mt-12 flex w-full flex-wrap justify-center gap-16 sm:justify-start'>
-                        {item.resources.map((resource: any) => (
-                            <ResourceCard
+                        {playList?.resources?.map((resource: any) => (
+                            <ResourceCard 
                                 key={resource._id}
                                 title={resource.title}
                                 id={resource._id}
@@ -86,7 +87,7 @@ const Page: NextPage<Props> = async ({ searchParams }) => {
                         ))}
                     </div>
                 </section>
-            ))} */}
+            ))} 
         </main>
     )
 }
